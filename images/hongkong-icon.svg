@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <defs>
+    <linearGradient id="hkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b35;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f9ca24;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <circle cx="40" cy="40" r="38" fill="url(#hkGradient)" stroke="#ffffff" stroke-width="2"/>
+  <!-- 香港城市天际线 -->
+  <rect x="20" y="50" width="4" height="20" fill="#ffffff"/>
+  <rect x="26" y="45" width="4" height="25" fill="#ffffff"/>
+  <rect x="32" y="40" width="4" height="30" fill="#ffffff"/>
+  <rect x="38" y="35" width="4" height="35" fill="#ffffff"/>
+  <rect x="44" y="40" width="4" height="30" fill="#ffffff"/>
+  <rect x="50" y="45" width="4" height="25" fill="#ffffff"/>
+  <rect x="56" y="50" width="4" height="20" fill="#ffffff"/>
+  <!-- 网络节点 -->
+  <circle cx="25" cy="25" r="2" fill="#ffffff"/>
+  <circle cx="40" cy="20" r="3" fill="#ffffff"/>
+  <circle cx="55" cy="25" r="2" fill="#ffffff"/>
+  <!-- 连接线 -->
+  <line x1="25" y1="25" x2="40" y2="20" stroke="#ffffff" stroke-width="1"/>
+  <line x1="40" y1="20" x2="55" y2="25" stroke="#ffffff" stroke-width="1"/>
+  <text x="40" y="75" text-anchor="middle" fill="#ffffff" font-size="6" font-family="Arial, sans-serif">HK NODE</text>
+</svg> 

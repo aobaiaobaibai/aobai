@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="consoleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2d2d2d;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4a4a4a;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="30" fill="url(#consoleGradient)" stroke="#ffffff" stroke-width="2"/>
+  <rect x="16" y="24" width="32" height="16" rx="4" fill="#ffffff"/>
+  <circle cx="22" cy="32" r="2" fill="#2d2d2d"/>
+  <circle cx="28" cy="32" r="2" fill="#2d2d2d"/>
+  <circle cx="42" cy="28" r="1.5" fill="#ff4444"/>
+  <circle cx="42" cy="36" r="1.5" fill="#44ff44"/>
+  <circle cx="38" cy="32" r="1.5" fill="#4444ff"/>
+  <circle cx="46" cy="32" r="1.5" fill="#ffff44"/>
+  <text x="32" y="54" text-anchor="middle" fill="#ffffff" font-size="5" font-family="Arial, sans-serif">CONSOLE</text>
+</svg> 

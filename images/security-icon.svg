@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56" width="56" height="56">
+  <defs>
+    <linearGradient id="securityGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b35;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#27ae60;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <circle cx="28" cy="28" r="26" fill="url(#securityGradient)" stroke="#ffffff" stroke-width="2"/>
+  <!-- 盾牌 -->
+  <path d="M28 10 L20 14 L20 28 Q20 38 28 44 Q36 38 36 28 L36 14 Z" fill="#ffffff"/>
+  <!-- 对勾 -->
+  <path d="M23 26 L26 30 L33 20" stroke="#27ae60" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <text x="28" y="50" text-anchor="middle" fill="#ffffff" font-size="4" font-family="Arial, sans-serif">SECURE</text>
+</svg> 

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56" width="56" height="56">
+  <defs>
+    <linearGradient id="smartGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b35;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#9b59b6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <circle cx="28" cy="28" r="26" fill="url(#smartGradient)" stroke="#ffffff" stroke-width="2"/>
+  <!-- AI大脑 -->
+  <path d="M18 20 Q28 12 38 20 Q40 28 38 36 Q28 44 18 36 Q16 28 18 20" fill="#ffffff"/>
+  <!-- 电路线条 -->
+  <path d="M22 24 L26 24 L28 22 L30 26 L34 26" stroke="#9b59b6" stroke-width="1.5" fill="none"/>
+  <path d="M22 32 L24 30 L26 32 L28 30 L32 32 L34 32" stroke="#9b59b6" stroke-width="1.5" fill="none"/>
+  <!-- 节点 -->
+  <circle cx="22" cy="24" r="1" fill="#9b59b6"/>
+  <circle cx="28" cy="22" r="1" fill="#9b59b6"/>
+  <circle cx="34" cy="26" r="1" fill="#9b59b6"/>
+  <circle cx="24" cy="30" r="1" fill="#9b59b6"/>
+  <circle cx="32" cy="32" r="1" fill="#9b59b6"/>
+  <text x="28" y="50" text-anchor="middle" fill="#ffffff" font-size="4" font-family="Arial, sans-serif">SMART</text>
+</svg> 

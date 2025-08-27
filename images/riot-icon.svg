@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="riotGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#c89b3c;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f0e6d2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="30" fill="url(#riotGradient)" stroke="#463714" stroke-width="2"/>
+  <path d="M20 20l24 0 0 8-8 0 0 16-8 0 0-16-8 0z" fill="#463714"/>
+  <path d="M28 30h8v2h-8z" fill="#c89b3c"/>
+  <path d="M30 34h4v2h-4z" fill="#c89b3c"/>
+  <text x="32" y="54" text-anchor="middle" fill="#463714" font-size="5" font-family="Arial, sans-serif">RIOT</text>
+</svg> 

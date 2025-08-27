@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="blizzardGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00aeff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0080ff;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="30" fill="url(#blizzardGradient)" stroke="#ffffff" stroke-width="2"/>
+  <path d="M32 12l8 12h-6l-2 8-8-12h6l2-8z" fill="#ffffff"/>
+  <path d="M24 28l12 8-4 6-8-2-8-8 4-6 8 2z" fill="#ffffff" opacity="0.8"/>
+  <circle cx="32" cy="40" r="3" fill="#ffffff"/>
+  <text x="32" y="54" text-anchor="middle" fill="#ffffff" font-size="5" font-family="Arial, sans-serif">BATTLE.NET</text>
+</svg> 
