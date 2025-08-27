@@ -1,6 +1,6 @@
 # 鳌拜网络加速器官方网站
 
-![Logo](uim-logo_800x800.png)
+![Logo](/images/uim-logo_128x128_homepage.png)
 
 ## 🌐 网站概述
 
