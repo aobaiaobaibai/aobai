@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>鳌拜 | Kiểm tra tốc độ trang gương | Trang gương có sẵn</title>
+  <style>
+    :root {
+      --primary-color: #893a56;
+      --success-color: #4CAF50;
+      --warning-color: #FF9800;
+      --danger-color: #f44336;
+      --text-color: #333;
+      --bg-color: #f5f5f5;
+      --card-bg: #ffffff;
+      --border-radius: 8px;
+      --transition: all 0.3s ease;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: var(--transition);
+      line-height: 1.6;
+    }
+
+    .dark-mode {
+      --primary-color: #b34d6a;
+      --text-color: #f5f5f5;
+      --bg-color: #2d2d2d;
+      --card-bg: #3d3d3d;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: var(--card-bg);
+      border-radius: var(--border-radius);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #toggle-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .logo {
+      width: 40px;
+      height: 40px;
+      transition: var(--transition);
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .toggle-buttons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .language-selector {
+      margin-right: 12px;
+    }
+
+    .language-selector select {
+      padding: 8px 12px;
+      border: 1px solid var(--primary-color);
+      border-radius: var(--border-radius);
+      background-color: var(--card-bg);
+      color: var(--text-color);
+      font-size: 14px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .language-selector select:hover {
+      border-color: var(--primary-color);
+      background-color: rgba(137, 58, 86, 0.05);
+    }
+
+    #toggle-container button {
+      padding: 8px 16px;
+      border: none;
+      border-radius: var(--border-radius);
+      background-color: var(--primary-color);
+      color: white;
+      cursor: pointer;
+      transition: var(--transition);
+      font-weight: 500;
+    }
+
+    #toggle-container button:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    #title {
+      font-size: 28px;
+      margin: 20px 0;
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    #status-main {
+      font-size: 1em;
+      margin-bottom: 20px;
+      color: var(--text-color);
+      opacity: 0.8;
+    }
+
+    .result-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 20px 0;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+    }
+
+    .result-table th, .result-table td {
+      padding: 12px;
+      text-align: center;
+      border: none;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .dark-mode .result-table th, 
+    .dark-mode .result-table td {
+      border-bottom-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .result-table th {
+      background-color: var(--primary-color);
+      color: white;
+      font-weight: 500;
+    }
+
+    .result-table tr:hover {
+      background-color: rgba(0, 0, 0, 0.02);
+    }
+
+    .dark-mode .result-table tr:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .status-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      display: inline-block;
+      margin: 0 auto;
+    }
+    
+    .status-available {
+      background-color: var(--success-color);
+      box-shadow: 0 0 6px rgba(76, 175, 80, 0.4);
+    }
+    
+    .status-unavailable {
+      background-color: var(--danger-color);
+      box-shadow: 0 0 6px rgba(244, 67, 54, 0.4);
+    }
+    
+    .status-resolving {
+      background-color: #ff9800;
+      box-shadow: 0 0 6px rgba(255, 152, 0, 0.4);
+      animation: pulse 1.5s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+
+    .button {
+      padding: 8px 16px;
+      border: none;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      transition: var(--transition);
+      font-weight: 500;
+      margin: 4px;
+    }
+
+    .enabled {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    .enabled:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    .disabled {
+      background-color: #e0e0e0;
+      color: #9e9e9e;
+      cursor: not-allowed;
+    }
+
+    .dark-mode .disabled {
+      background-color: #555;
+      color: #888;
+    }
+
+    #footer {
+      margin-top: 40px;
+      font-size: 14px;
+      color: var(--text-color);
+      opacity: 0.8;
+    }
+
+    #footer a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    #footer a:hover {
+      text-decoration: underline;
+    }
+
+    .countdown {
+      display: inline-block;
+      min-width: 1em;
+      font-weight: bold;
+      color: var(--primary-color);
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 10px;
+      }
+      
+      .result-table {
+        font-size: 14px;
+      }
+      
+      .result-table th, .result-table td {
+        padding: 8px;
+      }
+      
+      #title {
+        font-size: 24px;
+      }
+    }
+
+
+  </style>
+</head>
+<body>
+  <div id="main-content">
+    <div class="container">
+      <div id="toggle-container">
+        <div class="logo">
+          <img src="images/uim-logo_128x128_homepage.png" alt="Logo">
+        </div>
+        <div class="toggle-buttons">
+          <div class="language-selector">
+            <select id="languageSelect" onchange="switchLanguage()">
+              <option value="zh-CN" selected>🇨🇳 简体中文</option>
+              <option value="zh-TW">🇭🇰 繁體中文</option>
+              <option value="en">🇺🇸 English</option>
+              <option value="ja">🇯🇵 日本語</option>
+              <option value="ko">🇰🇷 한국어</option>
+              <option value="ru">🇷🇺 Русский</option>
+              <option value="th">🇹🇭 ไทย</option>
+              <option value="ms">🇲🇾 Bahasa Melayu</option>
+              <option value="id">🇮🇩 Bahasa Indonesia</option>
+              <option value="vi">🇻🇳 Tiếng Việt</option>
+            </select>
+          </div>
+          <button id="theme-toggle">Chế độ tối</button>
+        </div>
+      </div>
+      <h2 id="title">正在测速...</h2>
+      <div id="status-main"></div>
+      <table class="result-table" id="speedTable">
+        <tr>
+          <th id="header-mirror">镜像站</th>
+          <th id="header-category">状态</th>
+          <th id="header-action">操作</th>
+          <th id="header-link">链接</th>
+        </tr>
+      </table>
+      <div id="footer">
+        <a href="https://github.com/aobaiaobaibai/aobai" target="_blank">GitHub - Tìm đường về nhà</a> |
+        <a href="##" target="_blank">Các khu vực Tân Cương, Tây Tạng, Thanh Hải, Ninh Hạ không khả dụng. Vui lòng đăng ký cẩn thận. Xin lỗi sâu sắc!</a>
+      </div>
+    </div>
+  </div>
+  <script>
+    // 语言文件映射
+    const languageFiles = {
+      'zh-CN': 'nav.html',
+      'zh-TW': 'nav-tw.html',
+      'en': 'nav-en.html',
+      'ja': 'nav-ja.html',
+      'ko': 'nav-ko.html',
+      'ru': 'nav-ru.html',
+      'th': 'nav-th.html',
+      'ms': 'nav-ms.html',
+      'id': 'nav-id.html',
+      'vi': 'nav-vi.html'
+    };
+
+    // 切换语言函数
+    function switchLanguage() {
+      const selectedLang = document.getElementById('languageSelect').value;
+      const targetFile = languageFiles[selectedLang];
+      
+      // 保存用户选择的语言
+      localStorage.setItem('preferredLanguage', selectedLang);
+      
+      // 跳转到对应语言版本
+      if (targetFile && targetFile !== window.location.pathname.split('/').pop()) {
+        window.location.href = targetFile;
+      }
+    }
+
+    // 自动检测语言并设置
+    function detectAndSetLanguage() {
+      // 优先使用用户之前选择的语言
+      let preferredLang = localStorage.getItem('preferredLanguage');
+      
+      // 如果没有保存的偏好，检测浏览器语言
+      if (!preferredLang) {
+        const browserLang = navigator.language || navigator.languages[0];
+        
+        // 语言映射
+        if (browserLang.startsWith('zh-TW') || browserLang.startsWith('zh-HK')) {
+          preferredLang = 'zh-TW';
+        } else if (browserLang.startsWith('en')) {
+          preferredLang = 'en';
+        } else if (browserLang.startsWith('ja')) {
+          preferredLang = 'ja';
+        } else if (browserLang.startsWith('ko')) {
+          preferredLang = 'ko';
+        } else if (browserLang.startsWith('ru')) {
+          preferredLang = 'ru';
+        } else if (browserLang.startsWith('th')) {
+          preferredLang = 'th';
+        } else if (browserLang.startsWith('ms')) {
+          preferredLang = 'ms';
+        } else if (browserLang.startsWith('id')) {
+          preferredLang = 'id';
+        } else if (browserLang.startsWith('vi')) {
+          preferredLang = 'vi';
+        } else {
+          preferredLang = 'zh-CN'; // 默认简体中文
+        }
+      }
+      
+      // 设置选择器的值
+      const selector = document.getElementById('languageSelect');
+      if (selector) {
+        selector.value = preferredLang;
+        
+        // 如果当前页面不是用户偏好的语言，自动跳转
+        const currentFile = window.location.pathname.split('/').pop() || 'nav.html';
+        const targetFile = languageFiles[preferredLang];
+        
+        if (targetFile && targetFile !== currentFile && !sessionStorage.getItem('languageDetected')) {
+          sessionStorage.setItem('languageDetected', 'true');
+          window.location.href = targetFile;
+        }
+      }
+    }
+
+    // 以下为测速页面原有逻辑
+    let currentLanguage = "zh";
+    let isDarkMode = false;
+    let userInteracted = false;
+    let autoRedirectTimeout = null;
+    let autoRedirectDone = false;
+
+    // 检测浏览器语言
+    function detectLanguage() {
+      const browserLang = navigator.language || navigator.userLanguage;
+      if (browserLang.startsWith('zh')) {
+        return "zh";
+      } else {
+        return "en";
+      }
+    }
+
+    // 页面加载完成后自动开始测速
+    window.onload = function() {
+      // 自动检测语言并设置
+      detectAndSetLanguage();
+      // 自动检测语言
+      currentLanguage = detectLanguage();
+      updateButtonTexts();
+      renderTable(); // 立即渲染表格以应用语言
+      autoTestAll();
+    };
+
+    const translations = {
+
+      zh: {
+        title: "Đang kiểm tra tuyến đường...",
+        bestRouteFound: "Đã tìm thấy tuyến đường tối ưu, chuyển hướng tự động trong <span class=\"countdown\">5</span> giây!",
+        allUnavailable: "Tất cả tuyến đường không thể truy cập. Vui lòng kiểm tra cấu hình mạng và làm mới trang sau một lúc!",
+        dnsResolving: "Đang phân giải DNS, vui lòng chờ...",
+        retryHint: "Nếu vẫn không khả dụng, vui lòng làm mới trang",
+        tableHeaders: { mirror: "Gương", category: "Trạng thái", action: "Hành động", link: "Liên kết" },
+        testSpeedText: "Kiểm tra tốc độ",
+        visitText: "Truy cập",
+        waitingText: seconds => `Kiểm tra (${seconds}s)`,
+        unavailable: "Không khả dụng",
+        resolving: "Đang phân giải..."
+      },
+      en: {
+        title: "Đang kiểm tra tuyến đường...",
+        bestRouteFound: "Đã tìm thấy tuyến đường tối ưu, chuyển hướng tự động trong <span class=\"countdown\">5</span> giây!",
+        allUnavailable: "Tất cả tuyến đường không thể truy cập. Vui lòng kiểm tra cấu hình mạng và làm mới trang sau một lúc!",
+        dnsResolving: "Đang phân giải DNS, vui lòng chờ...",
+        retryHint: "Nếu vẫn không khả dụng, vui lòng làm mới trang",
+        tableHeaders: { mirror: "Gương", category: "Trạng thái", action: "Hành động", link: "Liên kết" },
+        testSpeedText: "Kiểm tra tốc độ",
+        visitText: "Truy cập",
+        waitingText: seconds => `Kiểm tra (${seconds}s)`,
+        unavailable: "Không khả dụng",
+        resolving: "Đang phân giải..."
+      }
+    
+    };
+
+const sites = [
+      { name: { zh: "镜像站4", en: "Mirror 4" }, encoded: "aHR0cHM6Ly9ib29ranNvbi5vcmc=", lastClicked: 0, time: null, retryCount: 0 },
+      { name: { zh: "镜像站5", en: "Mirror 5" }, encoded: "aHR0cHM6Ly9ib29rZmVlZC5vcmc=", lastClicked: 0, time: null, retryCount: 0 }
+    ];
+
+    const cooldownPeriod = 10000;
+    const maxRetries = 2; // 最大重试次数
+    const dnsTimeout = 5000; // DNS解析超时时间
+
+    function getSpeedCategory(time, isResolving = false) {
+      if (isResolving) {
+        return { html: '<div class="status-dot status-resolving"></div>', available: false };
+      }
+      if (typeof time !== "number")
+        return { html: '<div class="status-dot status-unavailable"></div>', available: false };
+      return { html: '<div class="status-dot status-available"></div>', available: true };
+    }
+
+    function testSpeed(site, isRetry = false) {
+      if (site.lastClicked && (Date.now() - site.lastClicked < cooldownPeriod) && !isRetry)
+        return;
+      
+      if (!isRetry) {
+        site.lastClicked = Date.now();
+        site.retryCount = 0;
+      }
+      
+      // 设置解析状态
+      site.isResolving = true;
+      site.time = translations[currentLanguage].resolving;
+      renderTable();
+      
+      let start = performance.now();
+      let img = new Image();
+      let finished = false;
+      
+      // 使用更长的超时时间，给DNS解析更多时间
+      let timer = setTimeout(() => {
+        if (!finished) {
+          finished = true;
+          site.isResolving = false;
+          
+          // 如果是DNS解析问题，尝试重试
+          if (site.retryCount < maxRetries) {
+            site.retryCount++;
+            setTimeout(() => testSpeed(site, true), 1000); // 1秒后重试
+          } else {
+            site.time = translations[currentLanguage].unavailable;
+            renderTable();
+          }
+        }
+      }, dnsTimeout);
+      
+      img.onload = img.onerror = function() {
+        if (!finished) {
+          clearTimeout(timer);
+          finished = true;
+          site.isResolving = false;
+          
+          let t = parseFloat((performance.now() - start).toFixed(2));
+          if (t > dnsTimeout) {
+            // 如果响应时间过长，可能是DNS问题，尝试重试
+            if (site.retryCount < maxRetries) {
+              site.retryCount++;
+              setTimeout(() => testSpeed(site, true), 1000);
+            } else {
+              site.time = translations[currentLanguage].unavailable;
+            }
+          } else {
+            site.time = t;
+          }
+          renderTable();
+        }
+      };
+      
+      img.src = atob(site.encoded) + "/favicon.png?_=" + Math.random();
+    }
+
+    function startCountdown(element, seconds, callback) {
+      let count = seconds;
+      const countdownElement = element.querySelector('.countdown');
+      
+      const timer = setInterval(() => {
+        count--;
+        if (countdownElement) {
+          countdownElement.textContent = count;
+        }
+        
+        if (count <= 0) {
+          clearInterval(timer);
+          if (callback) callback();
+        }
+      }, 1000);
+    }
+
+    function renderTable() {
+      document.getElementById("title").innerText = translations[currentLanguage].title;
+      const table = document.getElementById("speedTable");
+      table.innerHTML = `<tr>
+          <th>${translations[currentLanguage].tableHeaders.mirror}</th>
+          <th>${translations[currentLanguage].tableHeaders.category}</th>
+          <th>${translations[currentLanguage].tableHeaders.action}</th>
+          <th>${translations[currentLanguage].tableHeaders.link}</th>
+      </tr>`;
+      sites.sort((a, b) => {
+        if (typeof a.time === "number" && typeof b.time === "number") return a.time - b.time;
+        if (typeof a.time === "number") return -1;
+        if (typeof b.time === "number") return 1;
+        return 0;
+      });
+      sites.forEach(site => {
+        const row = table.insertRow();
+        row.insertCell(0).innerText = site.name[currentLanguage];
+        const category = getSpeedCategory(site.time, site.isResolving);
+        const statusCell = row.insertCell(1);
+        statusCell.innerHTML = category.html;
+        statusCell.style.textAlign = 'center';
+        const actionCell = row.insertCell(2);
+        const testButton = document.createElement("button");
+        let remaining = 0;
+        if (site.lastClicked && (Date.now() - site.lastClicked < cooldownPeriod)) {
+          remaining = Math.ceil((cooldownPeriod - (Date.now() - site.lastClicked)) / 1000);
+          testButton.disabled = true;
+          testButton.className = "button disabled";
+          testButton.innerText = translations[currentLanguage].waitingText(remaining);
+        } else {
+          testButton.disabled = false;
+          testButton.className = "button enabled";
+          testButton.innerText = translations[currentLanguage].testSpeedText;
+        }
+        testButton.onclick = () => { testSpeed(site); };
+        actionCell.appendChild(testButton);
+        const linkCell = row.insertCell(3);
+        const visitButton = document.createElement("button");
+        visitButton.innerText = translations[currentLanguage].visitText;
+        visitButton.className = "button enabled";
+        visitButton.onclick = (event) => {
+          if (event.isTrusted) {
+            // 显性跳转：直接在新窗口打开目标网站
+            window.open(atob(site.encoded), "_blank");
+          } else {
+            alert(currentLanguage === "zh" ? "请手动点击链接" : "Please click the link manually");
+          }
+        };
+        linkCell.appendChild(visitButton);
+      });
+      const statusDiv = document.getElementById("status-main");
+      
+      // 检查是否有正在解析的站点
+      const hasResolving = sites.some(site => site.isResolving);
+      const hasAvailable = sites.some(site => typeof site.time === "number");
+      const allUnavailable = sites.every(site => !site.isResolving && typeof site.time !== "number");
+      
+      if (hasAvailable) {
+        // 有可用站点
+        statusDiv.innerHTML = translations[currentLanguage].bestRouteFound;
+        if (!autoRedirectDone && !autoRedirectTimeout && !userInteracted) {
+          startCountdown(statusDiv, 5, () => {
+            if (!userInteracted && !autoRedirectDone) {
+              // 显性跳转：直接在新窗口打开目标网站
+              window.open(atob(sites[0].encoded), "_blank");
+              autoRedirectDone = true;
+            }
+            statusDiv.innerText = "";
+          });
+        }
+      } else if (hasResolving) {
+        // 有站点正在解析DNS
+        statusDiv.innerHTML = translations[currentLanguage].dnsResolving + "<br><small>" + translations[currentLanguage].retryHint + "</small>";
+        if (autoRedirectTimeout) {
+          clearTimeout(autoRedirectTimeout);
+          autoRedirectTimeout = null;
+        }
+      } else if (allUnavailable) {
+        // 所有站点都不可用
+        statusDiv.innerText = translations[currentLanguage].allUnavailable;
+        if (autoRedirectTimeout) {
+          clearTimeout(autoRedirectTimeout);
+          autoRedirectTimeout = null;
+        }
+      }
+    }
+
+    function autoTestAll() {
+      // 延迟启动，给DNS解析更多时间
+      setTimeout(() => {
+        sites.forEach((site, index) => {
+          // 错开启动时间，避免同时解析多个域名
+          setTimeout(() => {
+            testSpeed(site);
+          }, index * 500); // 每个站点间隔500ms启动
+        });
+      }, 1000); // 页面加载1秒后开始测速
+    }
+
+    document.addEventListener("click", function(e) {
+      if (e.target.tagName.toLowerCase() === "button") {
+        userInteracted = true;
+        if (autoRedirectTimeout) {
+          clearTimeout(autoRedirectTimeout);
+          autoRedirectTimeout = null;
+          document.getElementById("status-main").innerText = "";
+        }
+      }
+    });
+
+    // 更新按钮文本
+    function updateButtonTexts() {
+      document.getElementById("theme-toggle").innerText = isDarkMode ? "Chế độ sáng" : "Chế độ tối";
+    }
+
+    document.getElementById("theme-toggle").onclick = () => {
+      isDarkMode = !isDarkMode;
+      document.body.classList.toggle("dark-mode");
+      updateButtonTexts();
+    };
+
+    setInterval(renderTable, 1000);
+
+
+  </script>
+</body>
+</html>
+

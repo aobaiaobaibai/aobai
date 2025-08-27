@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AoBai Network Accelerator | Gaming, HBO, AppleTV, Disney+, Netflix High-Speed Access</title>
+  <style>
+    :root {
+      --aobai-red: #893a56;
+      --aobai-red-light: #b34d6a;
+      --aobai-dark: #2d2d2d;
+      --aobai-light: #fff5f7;
+      --aobai-gray: #f5f5f5;
+      --aobai-accent: #ff6b35;
+      --radius: 12px;
+      --transition: all 0.3s ease;
+    }
+    
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--aobai-light);
+      color: #222;
+      line-height: 1.7;
+    }
+    
+    .banner {
+      background: linear-gradient(135deg, var(--aobai-red) 0%, var(--aobai-red-light) 100%);
+      color: #fff;
+      padding: 48px 0 32px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="white" opacity="0.1"/><circle cx="80" cy="40" r="1" fill="white" opacity="0.1"/><circle cx="40" cy="80" r="1.5" fill="white" opacity="0.1"/></svg>');
+      pointer-events: none;
+    }
+    
+    .banner .logo {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 16px auto;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .banner h1 {
+      font-size: 2.5em;
+      margin: 0 0 12px 0;
+      font-weight: 700;
+      letter-spacing: 2px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .banner .slogan {
+      font-size: 1.3em;
+      margin-bottom: 24px;
+      opacity: 0.95;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .banner .register-btn {
+      background: var(--aobai-accent);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius);
+      padding: 14px 36px;
+      font-size: 1.1em;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(255,107,53,0.3);
+      transition: var(--transition);
+      outline: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .banner .register-btn:hover {
+      background: #ff5722;
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 6px 16px rgba(255,107,53,0.4);
+    }
+    
+    .section {
+      max-width: 920px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: 0 4px 16px rgba(137,58,86,0.08);
+      padding: 36px 28px;
+      position: relative;
+    }
+    
+    .section-title {
+      color: var(--aobai-red);
+      font-size: 1.6em;
+      font-weight: 700;
+      margin-bottom: 24px;
+      text-align: center;
+      position: relative;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: var(--aobai-accent);
+      border-radius: 2px;
+    }
+    
+    .problem-desc {
+      font-size: 1.1em;
+      color: #444;
+      max-width: 720px;
+      margin: 0 auto 32px auto;
+      text-align: center;
+      line-height: 1.8;
+    }
+    
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      margin: 32px 0;
+    }
+    
+    .game-card {
+      background: var(--aobai-gray);
+      border-radius: var(--radius);
+      padding: 24px 18px;
+      text-align: center;
+      transition: var(--transition);
+      outline: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      border: 2px solid transparent;
+    }
+    
+    .game-card:hover {
+      border-color: var(--aobai-red);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(137,58,86,0.15);
+    }
+    
+    .game-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 16px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .game-title {
+      font-weight: 700;
+      font-size: 1.2em;
+      margin-bottom: 8px;
+      color: var(--aobai-red);
+    }
+    
+    .game-desc {
+      font-size: 0.98em;
+      color: #555;
+      line-height: 1.6;
+    }
+    
+    .hongkong-section {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-radius: var(--radius);
+      padding: 32px;
+      margin: 32px 0;
+      text-align: center;
+    }
+    
+    .hongkong-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 20px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin: 32px 0;
+      justify-items: center;
+      align-items: start;
+    }
+    
+    .feature-item {
+      background: var(--aobai-gray);
+      border-radius: var(--radius);
+      padding: 24px 18px;
+      text-align: center;
+      transition: var(--transition);
+      outline: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      border: 2px solid transparent;
+      width: 100%;
+      min-height: 200px;
+    }
+    
+    .feature-item:hover {
+      /* 移除边框变色效果 */
+    }
+    
+    .feature-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 16px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .feature-title {
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--aobai-red);
+      font-size: 1.1em;
+    }
+    
+    .feature-desc {
+      font-size: 0.97em;
+      color: #555;
+      line-height: 1.6;
+    }
+    
+    .register-section {
+      background: linear-gradient(135deg, var(--aobai-red) 0%, var(--aobai-red-light) 100%);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      border-radius: var(--radius);
+      margin: 40px 0;
+    }
+    
+    .register-section h3 {
+      font-size: 1.4em;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+    
+    .register-section p {
+      font-size: 1.1em;
+      margin-bottom: 20px;
+      opacity: 0.95;
+    }
+    
+    .register-section .register-btn {
+      font-size: 1.2em;
+      padding: 16px 40px;
+      background: var(--aobai-accent);
+      border: none;
+      border-radius: var(--radius);
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      outline: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    
+    .register-section .register-btn:hover {
+      background: #ff5722;
+      transform: translateY(-2px) scale(1.05);
+    }
+    
+    .footer {
+      text-align: center;
+      color: #666;
+      font-size: 0.95em;
+      margin: 40px 0 20px 0;
+      padding: 20px;
+    }
+    
+    .footer a {
+      color: var(--aobai-red);
+      text-decoration: none;
+      transition: var(--transition);
+      outline: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    }
+    
+    .footer a:hover {
+      color: var(--aobai-red-light);
+      text-decoration: underline;
+    }
+    
+    .top-nav {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .language-selector select {
+      background: rgba(255,255,255,0.15);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 0.85em;
+      cursor: pointer;
+      backdrop-filter: blur(20px);
+      transition: var(--transition);
+      outline: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    }
+    
+    .language-selector select:hover {
+      background: rgba(255,255,255,0.25);
+      border-color: rgba(255,255,255,0.4);
+    }
+    
+    .language-selector select option {
+      background: var(--aobai-dark);
+      color: white;
+      padding: 8px;
+    }
+    
+    .nav-link {
+      background: rgba(255,255,255,0.15);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.9em;
+      font-weight: 500;
+      transition: var(--transition);
+      outline: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .nav-link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+    
+    .nav-link:hover::before {
+      left: 100%;
+    }
+    
+    .nav-link:hover {
+      background: rgba(255,255,255,0.25);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      border-color: rgba(255,255,255,0.4);
+    }
+    
+    .nav-link.primary {
+      background: var(--aobai-accent);
+      /* 移除边框变色效果 */
+      font-weight: 600;
+    }
+    
+    .nav-link.primary:hover {
+      background: #ff5722;
+      border-color: #ff5722;
+      box-shadow: 0 4px 20px rgba(255,107,53,0.3);
+    }
+    
+    @media (min-width: 1200px) {
+      .features-grid {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 1000px;
+        margin: 32px auto;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .section { 
+        margin: 20px 16px; 
+        padding: 24px 20px; 
+      }
+      .banner h1 { 
+        font-size: 2em; 
+      }
+      .games-grid, .features-grid { 
+        grid-template-columns: 1fr; 
+        gap: 16px; 
+      }
+      .feature-item {
+        max-width: 320px;
+        width: 100%;
+      }
+      .top-nav {
+        top: 16px;
+        right: 16px;
+        gap: 6px;
+      }
+      .nav-link {
+        font-size: 0.85em;
+        padding: 8px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="banner">
+    <div class="top-nav">
+      <div class="language-selector">
+        <select id="languageSelect" onchange="switchLanguage()">
+          <option value="zh-CN">🇨🇳 简体中文</option>
+          <option value="zh-TW">🇭🇰 繁體中文</option>
+          <option value="en" selected>🇺🇸 English</option>
+          <option value="ja">🇯🇵 日本語</option>
+          <option value="ko">🇰🇷 한국어</option>
+          <option value="ru">🇷🇺 Русский</option>
+          <option value="th">🇹🇭 ไทย</option>
+          <option value="ms">🇲🇾 Bahasa Melayu</option>
+          <option value="id" selected>🇮🇩 Bahasa Indonesia</option>
+          <option value="vi">🇻🇳 Tiếng Việt</option>
+        </select>
+      </div>
+      <a href="nav.html" class="nav-link">Login</a>
+      <a href="nav.html" class="nav-link primary">Sign Up</a>
+    </div>
+    <img class="logo" src="images/uim-logo_128x128_homepage.png" alt="AoBai Logo">
+    <h1>AoBai Network Accelerator</h1>
+    <div class="slogan">Gaming, Streaming Entertainment - Global Network at Lightning Speed!</div>
+    <button class="register-btn" onclick="window.open('nav.html','_blank')">🚀 Free Trial, Start Now</button>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Why is accessing overseas platforms slow from China?</div>
+    <div class="problem-desc">
+      Due to complex routing and bandwidth bottlenecks between domestic networks and overseas servers, direct connections to servers in Europe, America, Japan, Korea, and Southeast Asia often experience high latency, packet loss, and lag. The following popular platforms all face serious connection difficulties:
+    </div>
+    
+          <div class="games-grid">
+        <div class="game-card">
+          <div class="game-icon">
+            <img src="images/steam-icon.svg" alt="Steam" style="width:100%;height:100%;">
+          </div>
+          <div class="game-title">Steam Platform</div>
+          <div class="game-desc">Popular games like CS:GO, Dota2, PUBG, Apex Legends have servers mostly overseas, with direct connection latency reaching 200-500ms, severely affecting competitive gaming experience.</div>
+        </div>
+        
+        <div class="game-card">
+          <div class="game-icon">
+            <img src="images/blizzard-icon.svg" alt="Blizzard" style="width:100%;height:100%;">
+          </div>
+          <div class="game-title">Blizzard Battle.net</div>
+          <div class="game-desc">Overwatch, World of Warcraft, Diablo 4, etc. After domestic servers shut down, need to connect to international servers with extremely high latency and frequent disconnections.</div>
+        </div>
+        
+        <div class="game-card">
+          <div class="game-icon">
+            <img src="images/riot-icon.svg" alt="Riot Games" style="width:100%;height:100%;">
+          </div>
+          <div class="game-title">Riot Games</div>
+          <div class="game-desc">League of Legends international servers, Valorant and other competitive games. Domestic and international servers are separated, requiring stable acceleration for normal gameplay.</div>
+        </div>
+        
+        <div class="game-card">
+          <div class="game-icon">
+            <img src="images/console-icon.svg" alt="Console Games" style="width:100%;height:100%;">
+          </div>
+          <div class="game-title">Console Gaming</div>
+          <div class="game-desc">Nintendo Switch, PS5, Xbox console games have high latency when connecting directly to overseas servers, with frequent online interruptions.</div>
+        </div>
+        
+        <div class="game-card">
+          <div class="game-icon">
+            <img src="images/hbo-icon.svg" alt="TikTok" style="width:100%;height:100%;">
+          </div>
+          <div class="game-title">HBO Max</div>
+          <div class="game-desc">Video uploads are extremely slow, live streaming frequently interrupts, creators cannot publish content normally, missing traffic opportunities.</div>
+        </div>
+        
+        <div class="game-card">
+          <div class="game-icon">
+            <img src="images/appletv-icon.svg" alt="YouTube" style="width:100%;height:100%;">
+          </div>
+          <div class="game-title">Apple TV+</div>
+          <div class="game-desc">4K video uploads repeatedly fail, live streaming lags and disconnects, creator revenue suffers, channel growth stagnates.</div>
+        </div>
+        
+        <div class="game-card">
+          <div class="game-icon">
+            <img src="images/netflix-icon.svg" alt="Netflix" style="width:100%;height:100%;">
+          </div>
+          <div class="game-title">Netflix & Streaming</div>
+          <div class="game-desc">Netflix, Disney+, Hulu and other streaming services fail to load, frequent buffering reduces quality, affecting viewing experience.</div>
+        </div>
+        
+        <div class="game-card">
+          <div class="game-icon">
+            <img src="images/disney-icon.svg" alt="Business" style="width:100%;height:100%;">
+          </div>
+          <div class="game-title">Disney+</div>
+          <div class="game-desc">Google Workspace sync failures, Microsoft 365 international version lags, Zoom international meetings frequently disconnect, affecting business efficiency.</div>
+        </div>
+        
+        <div class="game-card">
+          <div class="game-icon">
+            <img src="images/streaming-icon.svg" alt="Research Tools" style="width:100%;height:100%;">
+          </div>
+          <div class="game-title">Other Streaming Platforms</div>
+          <div class="game-desc">GitHub code sync timeouts, ChatGPT/Claude slow responses, arXiv paper download failures, Google Scholar inaccessible, seriously affecting R&D progress.</div>
+        </div>
+      </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Hong Kong Node Acceleration - Immediate Results!</div>
+    <div class="hongkong-section">
+      <div class="hongkong-icon">
+        <img src="images/hongkong-icon.svg" alt="Hong Kong Node" style="width:100%;height:100%;">
+      </div>
+      <div style="font-size:1.1em;color:#444;max-width:600px;margin:0 auto;">
+        <strong>Hong Kong nodes are extremely close to mainland China with abundant export bandwidth</strong><br>
+        Through AoBai Accelerator's Hong Kong dedicated lines, data reaches overseas servers directly<br>
+        <span style="color:var(--aobai-red);font-weight:700;">Latency reduced from 300ms to 30ms, packet loss near 0%</span><br>
+        Whether gaming, video, or office work, experience a quantum leap in performance!
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">AoBai Accelerator Core Advantages</div>
+    <div class="features-grid">
+      <div class="feature-item">
+        <div class="feature-icon">
+          <img src="images/udp-icon.svg" alt="UDP Support" style="width:100%;height:100%;">
+        </div>
+        <div class="feature-title">Full UDP Protocol Support</div>
+        <div class="feature-desc">Full compatibility with Steam, consoles, mobile games and other platforms, lossless UDP packet transmission, no lag in online gaming.</div>
+      </div>
+      
+      <div class="feature-item">
+        <div class="feature-icon">
+          <img src="images/speed-icon.svg" alt="High Speed" style="width:100%;height:100%;">
+        </div>
+        <div class="feature-title">Hong Kong Dedicated High Speed</div>
+        <div class="feature-desc">Direct connection to Hong Kong, intelligent selection of optimal nodes, gaming latency as low as 20-30ms, say goodbye to high ping troubles.</div>
+      </div>
+      
+      <div class="feature-item">
+        <div class="feature-icon">
+          <img src="images/global-icon.svg" alt="Global Coverage" style="width:100%;height:100%;">
+        </div>
+        <div class="feature-title">Global Server Coverage</div>
+        <div class="feature-desc">Supports US, EU, Asia, Japan-Korea and other major global gaming regions, one-click switching to optimal routes.</div>
+      </div>
+      
+      <div class="feature-item">
+        <div class="feature-icon">
+          <img src="images/gift-icon.svg" alt="Free Gift" style="width:100%;height:100%;">
+        </div>
+        <div class="feature-title">Free Registration Benefits</div>
+        <div class="feature-desc">Get 3 days of 5GB high-speed traffic upon registration, experience premium gaming acceleration services without payment.</div>
+      </div>
+      
+      <div class="feature-item">
+        <div class="feature-icon">
+          <img src="images/security-icon.svg" alt="Security" style="width:100%;height:100%;">
+        </div>
+        <div class="feature-title">Stable, Secure & Reliable</div>
+        <div class="feature-desc">24/7 stable operation, military-grade encrypted transmission, protecting your gaming data and privacy security.</div>
+      </div>
+      
+      <div class="feature-item">
+        <div class="feature-icon">
+          <img src="images/smart-icon.svg" alt="Smart Recognition" style="width:100%;height:100%;">
+        </div>
+        <div class="feature-title">Intelligent Traffic Recognition</div>
+        <div class="feature-desc">Automatically recognizes gaming, video, office and other traffic types, intelligently selects optimal paths, no manual configuration required.</div>
+      </div>
+      
+      <div class="feature-item">
+        <div class="feature-icon">
+          <img src="images/disney-icon.svg" alt="Third Party Clients" style="width:100%;height:100%;">
+        </div>
+        <div class="feature-title">Third-Party Client Support</div>
+        <div class="feature-desc">Supports next-generation SingBox, Hiddify and other advanced clients, while compatible with traditional tools like ClashMeta, V2Ray, protecting user privacy.</div>
+      </div>
+      
+      <div class="feature-item">
+        <div class="feature-icon">
+          <img src="images/gift-icon.svg" alt="Subscription" style="width:100%;height:100%;">
+        </div>
+        <div class="feature-title">Flexible Subscription Service</div>
+        <div class="feature-desc">Basic subscription model, pay-as-you-need, supports monthly/yearly payments, no forced binding, maximizing customer choice protection.</div>
+      </div>
+      
+      <div class="feature-item">
+        <div class="feature-icon">
+          <img src="images/smart-icon.svg" alt="Advanced Protocols" style="width:100%;height:100%;">
+        </div>
+        <div class="feature-title">VLESS & Hysteria2 Dual Protocol Support</div>
+        <div class="feature-desc">Adopts latest VLESS lightweight protocol to reduce handshake latency; integrates Hysteria2 high-speed transmission, QUIC-based anti-packet-loss, stable even under network fluctuations.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="register-section">
+    <h3>🎁 Free Registration - Get 3 Days 5GB Traffic!</h3>
+    <p>Register now and experience lightning-fast global network acceleration<br>Say goodbye to high latency and lag, enjoy smooth network experience</p>
+    <button class="register-btn" onclick="window.open('nav.html','_blank')">Start Free Trial Now →</button>
+  </div>
+
+  <div class="footer">
+    <div>© 2024 AoBai Accelerator | High-Speed Hong Kong Lines, Global Network Access</div>
+    <div style="margin-top:8px;">
+      <a href="https://github.com/aobaiaobaibai/aobai" target="_blank">GitHub Project</a> | 
+      <a href="nav.html">Mirror Speed Test</a>
+    </div>
+  </div>
+
+  <script>
+    // 语言文件映射
+    const languageFiles = {
+      'zh-CN': 'index.html',
+      'zh-TW': 'index-tw.html',
+      'en': 'index-en.html',
+      'ja': 'index-ja.html',
+      'ko': 'index-ko.html',
+      'ru': 'index-ru.html',
+      'th': 'index-th.html',
+      'ms': 'index-ms.html',
+      'id': 'index-id.html',
+      'vi': 'index-vi.html'
+    };
+
+    // 切换语言函数
+    function switchLanguage() {
+      const selectedLang = document.getElementById('languageSelect').value;
+      const targetFile = languageFiles[selectedLang];
+      
+      // 保存用户选择的语言
+      localStorage.setItem('preferredLanguage', selectedLang);
+      
+      // 跳转到对应语言版本
+      if (targetFile && targetFile !== window.location.pathname.split('/').pop()) {
+        window.location.href = targetFile;
+      }
+    }
+
+    // 自动检测语言并设置
+    function detectAndSetLanguage() {
+      // 优先使用用户之前选择的语言
+      let preferredLang = localStorage.getItem('preferredLanguage');
+      
+      // 如果没有保存的偏好，检测浏览器语言
+      if (!preferredLang) {
+        const browserLang = navigator.language || navigator.languages[0];
+        
+        // 语言映射
+        if (browserLang.startsWith('zh-TW') || browserLang.startsWith('zh-HK')) {
+          preferredLang = 'zh-TW';
+        } else if (browserLang.startsWith('en')) {
+          preferredLang = 'en';
+        } else if (browserLang.startsWith('ja')) {
+          preferredLang = 'ja';
+        } else if (browserLang.startsWith('ko')) {
+          preferredLang = 'ko';
+        } else if (browserLang.startsWith('ru')) {
+          preferredLang = 'ru';
+        } else if (browserLang.startsWith('th')) {
+          preferredLang = 'th';
+        } else if (browserLang.startsWith('ms')) {
+          preferredLang = 'ms';
+        } else if (browserLang.startsWith('id')) {
+          preferredLang = 'id';
+        } else if (browserLang.startsWith('vi')) {
+          preferredLang = 'vi';
+        } else {
+          preferredLang = 'zh-CN'; // 默认简体中文
+        }
+      }
+      
+      // 设置选择器的值
+      const selector = document.getElementById('languageSelect');
+      if (selector) {
+        selector.value = preferredLang;
+        
+        // 如果当前页面不是用户偏好的语言，自动跳转
+        const currentFile = window.location.pathname.split('/').pop() || 'index.html';
+        const targetFile = languageFiles[preferredLang];
+        
+        if (targetFile && targetFile !== currentFile && !sessionStorage.getItem('languageDetected')) {
+          sessionStorage.setItem('languageDetected', 'true');
+          window.location.href = targetFile;
+        }
+      }
+    }
+
+    // 页面加载完成后执行语言检测
+    document.addEventListener('DOMContentLoaded', detectAndSetLanguage);
+  </script>
+</body>
+</html> 
